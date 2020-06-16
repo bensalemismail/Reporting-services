@@ -1,0 +1,99 @@
+CREATE VIEW dbo.NombrePolicesBU 
+AS
+SELECT p.IdBU,m.BU,COUNT(NombrePolicesActives) as PolicesActives 
+FROM Datawarehouse.dbo.FactPolicesEnCours  p
+INNER JOIN Datawarehouse.dbo.DimMutuelle  m
+ON p.IdBU = m.IdBU
+ GROUP BY p.IdBU,m.BU
+
+ 499
+
+
+
+prop.name
+
+    path: "/user",
+    name: "User",
+    icon: "pe-7s-user",
+    component: UserProfile,
+    layout: "/admin"
+
+
+<span class="border border-light"></span>
+<span class="border border-dark"></span>
+<span class="border border-white"></span>
+
+ mydataBar = {
+        labels: buTable,
+        series: [numberTable]
+      };
+
+    
+     
+
+mamda : #009858
+mcma: #8F166C
+maem : #F66416
+courtage : #
+      
+      
+
+      data = {
+        labels: mutuelle,
+        series: nbrClient
+      };
+        legend = {
+        names: mutuelle,
+        types: ["info", "danger", "warning","primary"]
+      };
+
+
+        fetch('http://localhost:8080/home/data')
+    .then(results => results.json())
+    .then(results =>
+      {
+        for(var item in results){
+          mutuelle.push(results[item].bu);
+          nbrClient.push(results[item].nombre);
+          
+           
+        }
+        
+       
+      }
+      );
+
+
+
+new Chart(canvas, {
+  type: 'line',
+  data: {
+    labels: ['1', '2', '3', '4', '5'],
+    datasets: [{
+      label: 'A',
+      yAxisID: 'A',
+      data: [100, 96, 84, 76, 69]
+    }, {
+      label: 'B',
+      yAxisID: 'B',
+      data: [1, 1, 1, 1, 0]
+    }]
+  },
+  options: {
+    scales: {
+      yAxes: [{
+        id: 'A',
+        type: 'linear',
+        position: 'left',
+      }, {
+        id: 'B',
+        type: 'linear',
+        position: 'right',
+        ticks: {
+          max: 1,
+          min: 0
+        }
+      }]
+    }
+  }
+});
